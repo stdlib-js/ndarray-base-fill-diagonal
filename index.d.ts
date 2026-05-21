@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,15 +16,12 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
 
-var diagonal = require( '@stdlib/ndarray-base-diagonal' );
-var fill = require( '@stdlib/ndarray-base-fill' );
-
-
-// MAIN //
+import { Collection } from '@stdlib/types/array';
+import { typedndarray } from '@stdlib/types/ndarray';
 
 /**
 * Fills a specified diagonal of a matrix (or stack of matrices) with a scalar value.
@@ -36,16 +33,11 @@ var fill = require( '@stdlib/ndarray-base-fill' );
 * -   The diagonal offset `k` is interpreted as `column - row`. Accordingly, when `k = 0`, the function fills the main diagonal; when `k > 0`, the function fills the diagonal above the main diagonal; and when `k < 0`, the function fills the diagonal below the main diagonal.
 * -   The function mutates the input ndarray in-place.
 *
-* @param {ndarray} x - input array
-* @param {*} value - scalar value
-* @param {IntegerArray} dims - dimension indices defining the plane in which to fill the diagonal
-* @param {integer} k - diagonal offset
-* @throws {RangeError} must provide exactly two dimension indices
-* @throws {RangeError} input ndarray must have two or more dimensions
-* @throws {RangeError} must provide valid dimension indices
-* @throws {Error} must provide unique dimension indices
-* @throws {TypeError} second argument cannot be safely cast to the input array data type
-* @returns {ndarray} input ndarray
+* @param x - input array
+* @param value - scalar value
+* @param dims - dimension indices defining the plane in which to fill the diagonal
+* @param k - diagonal offset
+* @returns input ndarray
 *
 * @example
 * var zeros = require( '@stdlib/ndarray-zeros' );
@@ -59,12 +51,9 @@ var fill = require( '@stdlib/ndarray-base-fill' );
 * var bool = ( out === x );
 * // returns true
 */
-function fillDiagonal( x, value, dims, k ) {
-	fill( diagonal( x, dims, k, true ), value );
-	return x;
-}
+declare function fillDiagonal<T = unknown, U extends typedndarray<T> = typedndarray<T>>( x: U, value: T, dims: Collection<number>, k: number ): U;
 
 
 // EXPORTS //
 
-module.exports = fillDiagonal;
+export = fillDiagonal;
